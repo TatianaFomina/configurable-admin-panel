@@ -6,7 +6,7 @@ module.exports = {
   resolve: {
     extensions: ['.ts', '.js', '.vue', '.json'],
     alias: {
-      'vue': '@vue/runtime-dom'
+      vue: '@vue/runtime-dom'
     }
   },
   module: {
@@ -15,13 +15,20 @@ module.exports = {
         test: /\.tsx?$/,
         loader: 'ts-loader',
         options: {
-          appendTsSuffixTo: [/\.vue$/],
+          appendTsSuffixTo: [/\.vue$/]
         },
-        exclude: /node_modules/,
+        exclude: /node_modules/
       },
       {
         test: /\.vue$/,
         use: 'vue-loader'
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'vue-style-loader',
+          'css-loader'
+        ]
       }
     ]
   },
@@ -29,6 +36,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/index.html', inject: 'body'
     }),
-    new VueLoaderPlugin(),
+    new VueLoaderPlugin()
   ]
 }
