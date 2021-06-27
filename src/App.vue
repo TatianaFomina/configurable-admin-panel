@@ -15,6 +15,6 @@ export default defineComponent({
 
 <style scoped>
 div {
-  background: red;
+  background: green;
 }
 </style>
