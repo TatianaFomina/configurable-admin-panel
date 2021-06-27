@@ -1,7 +1,4 @@
 <template>
-  <div>
-    Hello world!!
-  </div>
   <RouterView />
 </template>
 
@@ -12,9 +9,3 @@ export default defineComponent({
   name: 'App'
 })
 </script>
-
-<style scoped>
-div {
-  background: green;
-}
-</style>
