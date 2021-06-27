@@ -21,7 +21,7 @@ export default defineComponent({
 .container {
   background: var(--gray-5);
   height: 100vh;
-  display: flex
+  display: flex;
 }
 
 </style>
