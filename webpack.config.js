@@ -2,27 +2,20 @@ const { VueLoaderPlugin } = require('vue-loader')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
 const webpack = require('webpack')
-// const plugin = new webpack.DefinePlugin({
-//   PRODUCTION: JSON.stringify(true),
-//   VERSION: JSON.stringify('5fa3b9'),
-//   BROWSER_SUPPORTS_HTML5: true,
-//   TWO: '1+1',
-//   'typeof window': JSON.stringify('object'),
-//   'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-// })
 
 module.exports = {
   entry: './src/main.ts',
   resolve: {
     extensions: ['.ts', '.js', '.vue', '.json'],
     alias: {
-      vue: '@vue/runtime-dom'
+      vue: '@vue/runtime-dom',
+      '/~': path.resolve(__dirname, 'src')
     }
   },
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
+        test: /\.ts$/,
         loader: 'ts-loader',
         options: {
           appendTsSuffixTo: [/\.vue$/]
@@ -37,9 +30,13 @@ module.exports = {
         test: /\.css$/,
         use: [
           'vue-style-loader',
-          'css-loader'
-          // 'postcss-loader'
+          'css-loader',
+          'postcss-loader'
         ]
+      },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'asset/resource'
       }
     ]
   },
@@ -49,7 +46,7 @@ module.exports = {
     }),
     new VueLoaderPlugin(),
     new webpack.DefinePlugin({
-      __VUE_OPTIONS_API__: false,
+      __VUE_OPTIONS_API__: true,
       __VUE_PROD_DEVTOOLS__: false
     })
   ],
