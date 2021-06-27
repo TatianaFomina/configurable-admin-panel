@@ -13,7 +13,8 @@
   "author": "Tatiana Fomina",
   "license": "ISC",
   "dependencies": {
-    "vue": "^3.1.2"
+    "vue": "^3.1.2",
+    "vue-router": "^4.0.10"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.28.0",
