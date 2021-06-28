@@ -15,6 +15,16 @@
             {{ col.label.text }}
           </span>
         </th>
+        <th v-if="actions.length">
+          <Icon name="target"
+                size="15"
+                tag="i"
+                class="icon"
+          />
+          <span>
+            Действия
+          </span>
+        </th>
       </tr>
       <tr v-for="row of data"
           :key="row.id"
@@ -31,6 +41,16 @@
           <template v-else>
             {{ item }}
           </template>
+        </td>
+        <td v-if="actions.length"
+            class="actions-cell"
+        >
+          <Icon name="more-horizontal"
+                size="24"
+                tag="i"
+                stroke="2"
+                class="icon"
+          />
         </td>
       </tr>
     </table>
@@ -109,6 +129,10 @@ export default defineComponent({
   th > div {
     display: flex;
     align-items: center;
+  }
+
+  td.actions-cell {
+    text-align: center;
   }
 
   a {

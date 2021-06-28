@@ -20,7 +20,7 @@ export default defineComponent({
       }
     },
     size: {
-      type: Number,
+      type: [Number, String],
       default: 24
     },
     strokeWidth: {
