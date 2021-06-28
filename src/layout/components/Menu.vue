@@ -91,7 +91,7 @@ export default defineComponent({
 .avatar {
   width: 1.5rem;
   height: 1.5rem;
-  background: url('/~/public/avatar.jpg');
+  background: url('@/public/avatar.jpg');
   background-size: cover;
   border-radius: 15%;
   margin-right: 0.75rem;
@@ -110,6 +110,9 @@ export default defineComponent({
 
 .menu-item {
   padding: 0.5rem 1.25rem 0.5rem 1.25rem;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .section-item {

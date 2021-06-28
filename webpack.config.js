@@ -9,7 +9,7 @@ module.exports = {
     extensions: ['.ts', '.js', '.vue', '.json'],
     alias: {
       vue: '@vue/runtime-dom',
-      '/~': path.resolve(__dirname, 'src')
+      '@': path.resolve(__dirname, 'src')
     }
   },
   module: {
