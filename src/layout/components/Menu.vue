@@ -67,7 +67,7 @@ export default defineComponent({
 })
 </script>
 
-<style>
+<style scoped>
 
 .avatar-group {
   display: flex;
@@ -76,7 +76,7 @@ export default defineComponent({
 
 .profile {
   padding: 1rem 0.75rem 1rem 1.3rem;
-  border-bottom: 1px solid var(--gray-4);
+  border-bottom: 1px solid var(--gray-6);
   color: white;
   font-weight: bold;
   display: flex;
@@ -85,7 +85,7 @@ export default defineComponent({
 }
 
 .profile:hover {
-  background: var(--gray-4);
+  background: var(--gray-6);
 }
 
 .avatar {

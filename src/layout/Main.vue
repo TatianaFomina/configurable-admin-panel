@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <Menu />
-    <ConfigurableView />
+    <ConfigurableView class="view" />
   </div>
 </template>
 
@@ -22,9 +22,13 @@ export default defineComponent({
 <style>
 
 .container {
-  background: var(--gray-5);
+  background: var(--gray-6);
   height: 100vh;
   display: flex;
+}
+
+.view {
+  flex: 1
 }
 
 </style>
