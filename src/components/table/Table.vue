@@ -5,7 +5,15 @@
         <th v-for="col of cols"
             :key="col.param"
         >
-          {{ col.label?.text }}
+          <Icon v-if="col.label.icon"
+                :name="col.label.icon"
+                size="15"
+                tag="i"
+                class="icon"
+          />
+          <span>
+            {{ col.label.text }}
+          </span>
         </th>
       </tr>
       <tr v-for="row of data"
@@ -31,6 +39,7 @@
 
 <script lang='ts'>
 import { defineComponent, PropType } from 'vue'
+import Icon from '@/components/icon/icon.vue'
 
 export interface Column {
   param: string
@@ -48,6 +57,9 @@ export class Action {
 
 export default defineComponent({
   name: 'Table',
+  components: {
+    Icon
+  },
   props: {
     cols: {
       type: Array as PropType<Column[]>,
@@ -94,6 +106,11 @@ export default defineComponent({
     color: var(--gray-2)
   }
 
+  th > div {
+    display: flex;
+    align-items: center;
+  }
+
   a {
     color: var(--blue-1);
     text-decoration: none;
@@ -108,5 +125,11 @@ export default defineComponent({
 
   .view-container {
     padding: 2.5rem;
+  }
+
+  .icon {
+    display: inline-block;
+    transform: translateY(2px);
+    margin-right: 0.3rem;
   }
 </style>

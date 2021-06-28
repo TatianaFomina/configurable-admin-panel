@@ -8,11 +8,13 @@
 <script lang="view">
 import { defineComponent } from 'vue'
 import Table from '@/components/table/table.vue'
+// import Icon from '@/components/icon/icon.vue'
 
 export default defineComponent({
   name: 'ConfigurableView',
   components: {
     Table
+    // Icon
   },
   data() {
     return {
@@ -52,7 +54,7 @@ export default defineComponent({
                     param: 'email',
                     label: {
                       text: 'Email',
-                      icon: 'email'
+                      icon: 'at-sign'
                     }
                   },
                   {

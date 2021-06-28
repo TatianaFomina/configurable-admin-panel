@@ -5,7 +5,8 @@
     "strict": true,
     "jsx": "preserve",
     "moduleResolution": "node",
-    "strictPropertyInitialization": false
+    "strictPropertyInitialization": false,
+    "strictNullChecks": false
   },
   "include": [
     "src/**/*.ts",
