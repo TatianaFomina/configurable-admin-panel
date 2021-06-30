@@ -68,14 +68,17 @@ export default defineComponent({
                 actions: [
                   {
                     label: 'Удалить :name',
-                    handler: () => {}
+                    disabled: false,
+                    handler: (row) => { alert(row.name) }
                   },
                   {
                     label: 'Редактировать',
+                    disabled: false,
                     handler: () => {}
                   },
                   {
                     label: 'Забанить',
+                    disabled: false,
                     handler: () => {}
                   }
                 ],

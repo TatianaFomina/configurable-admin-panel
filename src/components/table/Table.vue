@@ -45,12 +45,23 @@
         <td v-if="actions.length"
             class="actions-cell"
         >
-          <Icon name="more-horizontal"
-                size="24"
-                tag="i"
-                stroke="2"
-                class="icon"
-          />
+          <Popover>
+            <template #trigger>
+              <Icon name="more-horizontal"
+                    size="24"
+                    tag="i"
+                    stroke="2"
+                    class="icon"
+              />
+            </template>
+            <PopoverItem v-for="action of actions"
+                         :key="action"
+                         :disabled="action.disabled"
+                         @click="!action.disabled && action.handler && action.handler(row)"
+            >
+              {{ action.label }}
+            </PopoverItem>
+          </Popover>
         </td>
       </tr>
     </table>
@@ -59,7 +70,9 @@
 
 <script lang='ts'>
 import { defineComponent, PropType } from 'vue'
-import Icon from '@/components/icon/icon.vue'
+import Icon from '@/components/icon/Icon.vue'
+import Popover from '@/components/popover/Popover.vue'
+import PopoverItem from '@/components/popover/PopoverItem.vue'
 
 export interface Column {
   param: string
@@ -78,7 +91,9 @@ export class Action {
 export default defineComponent({
   name: 'Table',
   components: {
-    Icon
+    Icon,
+    Popover,
+    PopoverItem
   },
   props: {
     cols: {
@@ -132,7 +147,8 @@ export default defineComponent({
   }
 
   td.actions-cell {
-    text-align: center;
+    display: flex;
+    justify-content: center;
   }
 
   a {
