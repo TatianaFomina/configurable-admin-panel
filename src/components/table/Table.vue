@@ -1,71 +1,69 @@
 <template>
-  <div class="view-container">
-    <table>
-      <tr>
-        <th v-for="col of cols"
-            :key="col.param"
-        >
-          <Icon v-if="col.label.icon"
-                :name="col.label.icon"
-                size="15"
-                tag="i"
-                class="icon"
-          />
-          <span>
-            {{ col.label.text }}
-          </span>
-        </th>
-        <th v-if="actions.length">
-          <Icon name="target"
-                size="15"
-                tag="i"
-                class="icon"
-          />
-          <span>
-            Действия
-          </span>
-        </th>
-      </tr>
-      <tr v-for="row of data"
-          :key="row.id"
+  <table>
+    <tr>
+      <th v-for="col of cols"
+          :key="col.param"
       >
-        <td v-for="col of cols"
-            :key="col.param"
-            :set="item = row[col.param]"
-        >
-          <template v-if="col.type === 'link'">
-            <span class="link-wrap">
-              <a href="">{{ item }}</a>
-            </span>
+        <Icon v-if="col.label.icon"
+              :name="col.label.icon"
+              size="15"
+              tag="i"
+              class="icon"
+        />
+        <span>
+          {{ col.label.text }}
+        </span>
+      </th>
+      <th v-if="actions.length">
+        <Icon name="target"
+              size="15"
+              tag="i"
+              class="icon"
+        />
+        <span>
+          Действия
+        </span>
+      </th>
+    </tr>
+    <tr v-for="row of data"
+        :key="row.id"
+    >
+      <td v-for="col of cols"
+          :key="col.param"
+          :set="item = row[col.param]"
+      >
+        <template v-if="col.type === 'link'">
+          <span class="link-wrap">
+            <a href="">{{ item }}</a>
+          </span>
+        </template>
+        <template v-else>
+          {{ item }}
+        </template>
+      </td>
+      <td v-if="actions.length"
+          class="actions-cell"
+      >
+        <Popover>
+          <template #trigger>
+            <Icon name="more-horizontal"
+                  size="24"
+                  tag="i"
+                  stroke="2"
+                  class="icon"
+            />
           </template>
-          <template v-else>
-            {{ item }}
-          </template>
-        </td>
-        <td v-if="actions.length"
-            class="actions-cell"
-        >
-          <Popover>
-            <template #trigger>
-              <Icon name="more-horizontal"
-                    size="24"
-                    tag="i"
-                    stroke="2"
-                    class="icon"
-              />
-            </template>
-            <PopoverItem v-for="action of actions"
-                         :key="action"
-                         :disabled="action.disabled"
-                         @click="!action.disabled && action.handler && action.handler(row)"
-            >
-              {{ action.label?.split(' ').map(word => word.startsWith(':') ? row[word.substr(1)]: word).join(' ') }}
-            </PopoverItem>
-          </Popover>
-        </td>
-      </tr>
-    </table>
-  </div>
+          <PopoverItem v-for="action of actions"
+                       :key="action"
+                       :disabled="action.disabled"
+                       @click="!action.disabled && action.handler && action.handler(row)"
+          >
+            {{ action.label?.split(' ').map(word => word.startsWith(':') ? row[word.substr(1)]: word).join(' ') }}
+          </PopoverItem>
+        </Popover>
+      </td>
+    </tr>
+  </table>
 </template>
 
 <script lang='ts'>
@@ -148,10 +146,6 @@ export default defineComponent({
     padding-bottom: 1px;
     border-bottom: 1px dashed var(--blue-1);
     display: inline-block;
-  }
-
-  .view-container {
-    padding: 2.5rem;
   }
 
   .icon {

@@ -1,18 +1,23 @@
 <template>
-  <Table :cols="table.cols"
-         :actions="table.actions"
-         :data="table.data"
-  />
+  <div class="view-container">
+    <Table :cols="table.cols"
+           :actions="table.actions"
+           :data="table.data"
+    />
+    <Button>{{ button.text }}</Button>
+  </div>
 </template>
 
 <script lang="view">
 import { defineComponent } from 'vue'
-import Table from '@/components/table/table.vue'
+import Table from '@/components/table/Table.vue'
+import Button from '@/components/button/Button.vue'
 
 export default defineComponent({
   name: 'ConfigurableView',
   components: {
-    Table
+    Table,
+    Button
   },
   data() {
     return {
@@ -104,11 +109,16 @@ export default defineComponent({
   computed: {
     table() {
       return this.views[0].components[1].params
+    },
+    button() {
+      return this.views[0].components[0].params
     }
   }
 })
 </script>
 
-<style>
-
+<style scoped>
+  .view-container {
+    padding: 2.5rem;
+  }
 </style>
