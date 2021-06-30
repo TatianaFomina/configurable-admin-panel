@@ -59,7 +59,7 @@
                          :disabled="action.disabled"
                          @click="!action.disabled && action.handler && action.handler(row)"
             >
-              {{ action.label }}
+              {{ action.label?.split(' ').map(word => word.startsWith(':') ? row[word.substr(1)]: word).join(' ') }}
             </PopoverItem>
           </Popover>
         </td>
@@ -86,6 +86,7 @@ export interface Column {
 export class Action {
   label: string
   handler: (row: any) => void
+  disabled?: boolean
 }
 
 export default defineComponent({

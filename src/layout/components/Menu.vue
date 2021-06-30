@@ -1,12 +1,30 @@
 <template>
   <div class="menu-container">
-    <div class="profile">
-      <div class="avatar-group">
-        <div class="avatar" />
-        {{ profile.name }}
-      </div>
-      <ChevronDownIcon class="icon" />
-    </div>
+    <Popover>
+      <template #trigger>
+        <div class="profile">
+          <div class="avatar-group">
+            <div class="avatar" />
+            {{ profile.name }}
+          </div>
+          <ChevronDownIcon class="icon" />
+        </div>
+      </template>
+      <PopoverItem v-for="action of profile.actions"
+                   :key="action"
+      >
+        <div class="avatar-menu-item">
+          <Icon :name="action.icon"
+                size="15"
+                tag="i"
+                class="avatar-menu-item-icon"
+          />
+          <div>
+            {{ action.label }}
+          </div>
+        </div>
+      </PopoverItem>
+    </Popover>
     <template v-for="section in menu"
               :key="section"
     >
@@ -27,17 +45,40 @@
 <script lang='ts'>
 import { defineComponent } from 'vue'
 import { ChevronDownIcon } from '@heroicons/vue/solid'
+import Popover from '@/components/popover/Popover.vue'
+import PopoverItem from '@/components/popover/PopoverItem.vue'
+import Icon from '@/components/icon/Icon.vue'
 
 export default defineComponent({
   name: 'Menu',
   components: {
-    ChevronDownIcon
+    ChevronDownIcon,
+    Popover,
+    PopoverItem,
+    Icon
   },
   data() {
     return {
       profile: {
         name: 'Admin',
-        avatarUrl: ''
+        avatarUrl: '',
+        actions: [
+          {
+            label: 'Основные настройки',
+            icon: 'settings',
+            handler: () => {}
+          },
+          {
+            label: 'Настроить меню',
+            icon: 'menu',
+            handler: () => {}
+          },
+          {
+            label: 'Сообщить о проблеме',
+            icon: 'alert-triangle',
+            handler: () => {}
+          }
+        ]
       },
       menu: [
         {
@@ -76,16 +117,17 @@ export default defineComponent({
 
 .profile {
   padding: 1rem 0.75rem 1rem 1.3rem;
-  border-bottom: 1px solid var(--gray-6);
+  border-bottom: 1px solid var(--gray-5);
   color: white;
   font-weight: bold;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 16.7rem;
 }
 
 .profile:hover {
-  background: var(--gray-6);
+  background: var(--gray-5);
 }
 
 .avatar {
@@ -97,6 +139,16 @@ export default defineComponent({
   margin-right: 0.75rem;
 }
 
+.avatar-menu-item {
+  display: flex;
+  align-items: center;
+}
+
+.avatar-menu-item-icon {
+  transform: translateY(0.125rem);
+  margin-right: 1rem;
+}
+
 .icon {
   width: 1.75rem;
   height: 1.75rem;
@@ -105,7 +157,7 @@ export default defineComponent({
 
 .menu-container {
   width: 18.75rem;
-  border-right: 1px solid var(--gray-4);
+  border-right: 1px solid var(--gray-5);
 }
 
 .menu-item {

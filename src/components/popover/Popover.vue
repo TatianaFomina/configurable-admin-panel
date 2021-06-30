@@ -48,7 +48,8 @@ export default defineComponent({
     background: transparent;
     border: none;
     color: inherit;
-    cursor: pointer
+    cursor: pointer;
+    padding: 0;
   }
   .expanded-area {
     position: absolute;

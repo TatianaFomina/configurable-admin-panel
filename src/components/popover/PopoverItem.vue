@@ -25,10 +25,11 @@ export default defineComponent({
     background: var(--gray-6);
     padding: 0.5rem 1rem;
     cursor: pointer;
-    width: 10rem;
+    width: 12rem;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    font-size: 14px;
   }
 
   .popover-item-container:not(.disabled):hover {
