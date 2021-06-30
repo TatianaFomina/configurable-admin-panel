@@ -6,12 +6,19 @@
     "jsx": "preserve",
     "moduleResolution": "node",
     "strictPropertyInitialization": false,
-    "strictNullChecks": false
+    "strictNullChecks": false,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    },
   },
   "include": [
     "src/**/*.ts",
     "src/**/*.vue"
   ],
+  
   "types": [
     "@vue/compiler-core/dist/compiler-core",
     "@vue/compiler-dom/dist/compiler-dom",

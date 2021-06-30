@@ -8,13 +8,11 @@
 <script lang="view">
 import { defineComponent } from 'vue'
 import Table from '@/components/table/table.vue'
-// import Icon from '@/components/icon/icon.vue'
 
 export default defineComponent({
   name: 'ConfigurableView',
   components: {
     Table
-    // Icon
   },
   data() {
     return {

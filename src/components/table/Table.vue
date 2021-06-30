@@ -73,21 +73,7 @@ import { defineComponent, PropType } from 'vue'
 import Icon from '@/components/icon/Icon.vue'
 import Popover from '@/components/popover/Popover.vue'
 import PopoverItem from '@/components/popover/PopoverItem.vue'
-
-export interface Column {
-  param: string
-  label: {
-    text: string
-    icon?: string
-  },
-  type?: 'link' | 'text'
-}
-
-export class Action {
-  label: string
-  handler: (row: any) => void
-  disabled?: boolean
-}
+import { Action, Column } from '@/models/table'
 
 export default defineComponent({
   name: 'Table',
