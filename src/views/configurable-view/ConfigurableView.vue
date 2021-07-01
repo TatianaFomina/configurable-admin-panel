@@ -3,6 +3,7 @@
     <Table :cols="table.cols"
            :actions="table.actions"
            :data="table.data"
+           :title="table.title"
     />
     <Button>{{ button.text }}</Button>
   </div>
@@ -35,8 +36,14 @@ export default defineComponent({
               }
             },
             {
+              type: 'searchbar',
+              for: 'table0'
+            },
+            {
               type: 'table',
+              id: 'table0',
               params: {
+                title: 'Список пользователей',
                 cols: [
                   {
                     param: 'id',
@@ -108,7 +115,7 @@ export default defineComponent({
   },
   computed: {
     table() {
-      return this.views[0].components[1].params
+      return this.views[0].components[2].params
     },
     button() {
       return this.views[0].components[0].params

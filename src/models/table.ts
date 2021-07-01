@@ -20,5 +20,6 @@ export interface TableComponent extends ViewComponent {
   params: {
     cols: Column[],
     actions?: Action[]
+    title?: string
   }
 }

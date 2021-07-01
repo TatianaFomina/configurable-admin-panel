@@ -1,4 +1,8 @@
 <template>
+  <div class="heading">
+    <label class="table-title">{{ title }}</label>
+    <slot name="top" />
+  </div>
   <table>
     <tr>
       <th v-for="col of cols"
@@ -92,6 +96,10 @@ export default defineComponent({
     data: {
       type: Array,
       required: true
+    },
+    title: {
+      type: String,
+      default: null
     }
   }
 })
@@ -136,6 +144,11 @@ export default defineComponent({
     justify-content: center;
   }
 
+  /* th {
+    height: 1.75rem;
+    line-height: 1.75rem
+  } */
+
   a {
     color: var(--blue-1);
     text-decoration: none;
@@ -152,5 +165,17 @@ export default defineComponent({
     display: inline-block;
     transform: translateY(2px);
     margin-right: 0.3rem;
+  }
+
+  .table-title {
+    font-weight: 600;
+    font-size: 15px
+  }
+
+  .heading {
+    margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 </style>
