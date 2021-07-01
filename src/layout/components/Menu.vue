@@ -123,7 +123,7 @@ export default defineComponent({
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 16.7rem;
+  width: 16.95rem;
 }
 
 .profile:hover {
@@ -156,7 +156,7 @@ export default defineComponent({
 }
 
 .menu-container {
-  width: 18.75rem;
+  width: 19rem;
   border-right: 1px solid var(--gray-5);
 }
 

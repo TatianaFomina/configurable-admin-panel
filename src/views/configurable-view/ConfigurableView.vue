@@ -4,7 +4,11 @@
            :actions="table.actions"
            :data="table.data"
            :title="table.title"
-    />
+    >
+      <template #top>
+        <SearchBar />
+      </template>
+    </Table>
     <Button>{{ button.text }}</Button>
   </div>
 </template>
@@ -13,12 +17,14 @@
 import { defineComponent } from 'vue'
 import Table from '@/components/table/Table.vue'
 import Button from '@/components/button/Button.vue'
+import SearchBar from '@/components/searchbar/SearchBar.vue'
 
 export default defineComponent({
   name: 'ConfigurableView',
   components: {
     Table,
-    Button
+    Button,
+    SearchBar
   },
   data() {
     return {
