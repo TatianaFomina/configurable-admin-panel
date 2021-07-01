@@ -6,6 +6,7 @@
           class="icon"
     />
     <input type="text"
+           :placeholder="placeholder"
            @input="onInput"
     >
   </div>
@@ -24,6 +25,10 @@ export default defineComponent({
     modelValue: {
       type: String,
       default: null
+    },
+    placeholder: {
+      type: String,
+      default: 'Поиск'
     }
   },
   emits: ['update:modelValue'],
@@ -53,6 +58,10 @@ export default defineComponent({
   input {
     background: var(--gray-6);
     border: none;
+    color: var(--gray-1)
+  }
+
+  input::placeholder {
     color: var(--gray-2)
   }
 
@@ -61,7 +70,8 @@ export default defineComponent({
   }
 
   .icon {
-    transform: translateY(2px);
-    color: var(--gray-2)
+    transform: translateY(1px);
+    color: var(--gray-2);
+    margin-right: 0.25rem;
   }
 </style>
