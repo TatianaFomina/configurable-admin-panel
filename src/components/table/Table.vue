@@ -110,7 +110,8 @@ export default defineComponent({
 
 <style scoped>
   table {
-    width: 100%
+    width: 100%;
+    border-collapse: collapse;
   }
 
   td:not(:last-child) {
@@ -146,11 +147,6 @@ export default defineComponent({
     display: flex;
     justify-content: center;
   }
-
-  /* th {
-    height: 1.75rem;
-    line-height: 1.75rem
-  } */
 
   a {
     color: var(--blue-1);

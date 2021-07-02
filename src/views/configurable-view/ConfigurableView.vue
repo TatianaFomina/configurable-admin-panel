@@ -1,18 +1,13 @@
-
 <script lang="ts">
 import { defineComponent, h } from 'vue'
-import Table from '@/components/table/Table.vue'
-import Button from '@/components/button/Button.vue'
-import SearchBar from '@/components/searchbar/SearchBar.vue'
 import { useConfig } from '@/config'
 import { buildViewContent } from './view-builder'
+import Heading from './Heading.vue'
 
 export default defineComponent({
   name: 'ConfigurableView',
   components: {
-    Table,
-    Button,
-    SearchBar
+    Heading
   },
   data() {
     return {
@@ -37,7 +32,9 @@ export default defineComponent({
       {
         class: ['view-container']
       },
-      buildViewContent(this.view.components)
+      [
+        h(Heading),
+        buildViewContent(this.view.components)]
     )
   }
 })
@@ -45,14 +42,10 @@ export default defineComponent({
 
 <style scoped>
   .view-container {
-    padding: 2.5rem;
+    padding: 1.5rem 2.5rem;
   }
 
   .view-container > * {
     margin-bottom: 2rem
-  }
-
-  .space-bottom {
-    margin-bottom: 1rem
   }
 </style>

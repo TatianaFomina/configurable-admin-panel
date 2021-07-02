@@ -136,11 +136,29 @@ function getViewByKey(key: string) {
   return config.views.find(view => view.key === key)
 }
 
+function getViewHeadings(key: string) {
+  let heading: any = { }
+
+  config.menu.forEach(section => {
+    const item = section.items.find(item => item.name === key)
+
+    if (item) {
+      heading = {
+        section: section.label,
+        title: item.label
+      }
+    }
+  })
+
+  return heading
+}
+
 export function useConfig() {
   return {
     menu: config.menu,
     dropdownMenu: config.dropdownMenuActions,
     views: config.views,
-    getViewByKey
+    getViewByKey,
+    getViewHeadings
   }
 }
