@@ -32,16 +32,17 @@
         {{ section.label }}
       </div>
 
-      <div v-for="item of section.items"
-           :key="item.name"
-           class="menu-item section-item"
+      <RouterLink v-for="item of section.items"
+                  :key="item.name"
+                  :to="'#' + item.name"
       >
-        <RouterLink
-          :to="'#' + item.name"
+        <div
+          class="menu-item section-item"
+          :class="[currentHash === item.name && 'active']"
         >
           {{ item.label }}
-        </RouterLink>
-      </div>
+        </div>
+      </RouterLink>
     </template>
   </div>
 </template>
@@ -73,6 +74,11 @@ export default defineComponent({
         name: 'Admin',
         avatarUrl: '@/public/avatar.jpg'
       }
+    }
+  },
+  computed: {
+    currentHash() {
+      return this.$route.hash?.substr(1)
     }
   }
 })
@@ -137,16 +143,21 @@ export default defineComponent({
   overflow: hidden;
 }
 
-/* .section-item {
-  font-size: 15px;
-  color: var(--gray-1);
+a {
   text-decoration: none;
-} */
+}
 
-.section-item > a {
-  text-decoration: none;
+.section-item {
   font-size: 15px;
   color: var(--gray-1);
+}
+
+.section-item.active {
+  background: var(--gray-4)
+}
+
+.section-item:not(.active):hover {
+  background: var(--gray-5)
 }
 
 .section-label {
