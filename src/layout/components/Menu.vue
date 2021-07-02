@@ -34,9 +34,13 @@
 
       <div v-for="item of section.items"
            :key="item.name"
-           class="menu-item section-item "
+           class="menu-item section-item"
       >
-        {{ item.label }}
+        <RouterLink
+          :to="'#' + item.name"
+        >
+          {{ item.label }}
+        </RouterLink>
       </div>
     </template>
   </div>
@@ -133,7 +137,14 @@ export default defineComponent({
   overflow: hidden;
 }
 
-.section-item {
+/* .section-item {
+  font-size: 15px;
+  color: var(--gray-1);
+  text-decoration: none;
+} */
+
+.section-item > a {
+  text-decoration: none;
   font-size: 15px;
   color: var(--gray-1);
 }

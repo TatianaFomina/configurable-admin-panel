@@ -1,73 +1,75 @@
 <template>
-  <div class="heading">
-    <label class="table-title">{{ title }}</label>
-    <slot name="top" />
-  </div>
-  <table>
-    <tr>
-      <th v-for="col of cols"
-          :key="col.param"
-      >
-        <Icon v-if="col.label.icon"
-              :name="col.label.icon"
-              size="15"
-              tag="i"
-              class="icon"
-        />
-        <span>
-          {{ col.label.text }}
-        </span>
-      </th>
-      <th v-if="actions.length">
-        <Icon name="target"
-              size="15"
-              tag="i"
-              class="icon"
-        />
-        <span>
-          Действия
-        </span>
-      </th>
-    </tr>
-    <tr v-for="row of data"
-        :key="row.id"
-    >
-      <td v-for="col of cols"
-          :key="col.param"
-          :set="item = row[col.param]"
-      >
-        <template v-if="col.type === 'link'">
-          <span class="link-wrap">
-            <a href="">{{ item }}</a>
+  <div>
+    <div class="heading">
+      <label class="table-title">{{ title }}</label>
+      <slot name="top" />
+    </div>
+    <table>
+      <tr>
+        <th v-for="col of cols"
+            :key="col.param"
+        >
+          <Icon v-if="col.label.icon"
+                :name="col.label.icon"
+                size="15"
+                tag="i"
+                class="icon"
+          />
+          <span>
+            {{ col.label.text }}
           </span>
-        </template>
-        <template v-else>
-          {{ item }}
-        </template>
-      </td>
-      <td v-if="actions.length"
-          class="actions-cell"
+        </th>
+        <th v-if="actions.length">
+          <Icon name="target"
+                size="15"
+                tag="i"
+                class="icon"
+          />
+          <span>
+            Действия
+          </span>
+        </th>
+      </tr>
+      <tr v-for="row of data"
+          :key="row.id"
       >
-        <Popover>
-          <template #trigger>
-            <Icon name="more-horizontal"
-                  size="24"
-                  tag="i"
-                  stroke="2"
-                  class="icon"
-            />
+        <td v-for="col of cols"
+            :key="col.param"
+            :set="item = row[col.param]"
+        >
+          <template v-if="col.type === 'link'">
+            <span class="link-wrap">
+              <a href="">{{ item }}</a>
+            </span>
           </template>
-          <PopoverItem v-for="action of actions"
-                       :key="action"
-                       :disabled="action.disabled"
-                       @click="!action.disabled && action.handler && action.handler(row)"
-          >
-            {{ action.label?.split(' ').map(word => word.startsWith(':') ? row[word.substr(1)]: word).join(' ') }}
-          </PopoverItem>
-        </Popover>
-      </td>
-    </tr>
-  </table>
+          <template v-else>
+            {{ item }}
+          </template>
+        </td>
+        <td v-if="actions.length"
+            class="actions-cell"
+        >
+          <Popover>
+            <template #trigger>
+              <Icon name="more-horizontal"
+                    size="24"
+                    tag="i"
+                    stroke="2"
+                    class="icon"
+              />
+            </template>
+            <PopoverItem v-for="action of actions"
+                         :key="action"
+                         :disabled="action.disabled"
+                         @click="!action.disabled && action.handler && action.handler(row)"
+            >
+              {{ action.label?.split(' ').map(word => word.startsWith(':') ? row[word.substr(1)]: word).join(' ') }}
+            </PopoverItem>
+          </Popover>
+        </td>
+      </tr>
+    </table>
+  </div>
 </template>
 
 <script lang='ts'>

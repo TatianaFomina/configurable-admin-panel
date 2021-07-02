@@ -46,13 +46,6 @@ const config: Config = {
       key: 'managing-users',
       components: [
         {
-          type: 'button',
-          params: {
-            text: 'Добавить пользователя',
-            handler: () => {}
-          }
-        },
-        {
           type: 'searchbar',
           params: {
             for: 'table0'
@@ -126,16 +119,28 @@ const config: Config = {
               }
             ]
           }
+        },
+        {
+          type: 'button',
+          params: {
+            text: 'Добавить пользователя',
+            handler: () => {}
+          }
         }
       ]
     }
   ]
 }
 
+function getViewByKey(key: string) {
+  return config.views.find(view => view.key === key)
+}
+
 export function useConfig() {
   return {
     menu: config.menu,
     dropdownMenu: config.dropdownMenuActions,
-    views: config.views
+    views: config.views,
+    getViewByKey
   }
 }

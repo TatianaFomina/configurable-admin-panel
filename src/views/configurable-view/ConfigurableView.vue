@@ -1,24 +1,11 @@
-<template>
-  <div class="view-container">
-    <Table :cols="table.cols"
-           :actions="table.actions"
-           :data="table.data"
-           :title="table.title"
-    >
-      <template #top>
-        <SearchBar />
-      </template>
-    </Table>
-    <Button>{{ button.text }}</Button>
-  </div>
-</template>
 
-<script lang="view">
-import { defineComponent } from 'vue'
+<script lang="ts">
+import { defineComponent, h } from 'vue'
 import Table from '@/components/table/Table.vue'
 import Button from '@/components/button/Button.vue'
 import SearchBar from '@/components/searchbar/SearchBar.vue'
 import { useConfig } from '@/config'
+import { buildViewContent } from './view-builder'
 
 export default defineComponent({
   name: 'ConfigurableView',
@@ -27,22 +14,31 @@ export default defineComponent({
     Button,
     SearchBar
   },
-  setup() {
-    const { views } = useConfig()
-
-    return { views }
-  },
   data() {
     return {
     }
   },
   computed: {
-    table() {
-      return this.views[0].components[2].params
-    },
-    button() {
-      return this.views[0].components[0].params
+    view() {
+      const key = this.$route.hash?.substr(1)
+      const { getViewByKey } = useConfig()
+
+      return getViewByKey(key)
     }
+  },
+  watch: {
+  },
+  render() {
+    if (!this.view) {
+      return
+    }
+    return h(
+      'div',
+      {
+        class: ['view-container']
+      },
+      buildViewContent(this.view.components)
+    )
   }
 })
 </script>
@@ -50,9 +46,13 @@ export default defineComponent({
 <style scoped>
   .view-container {
     padding: 2.5rem;
-
   }
-  .margin-bottom {
+
+  .view-container > * {
+    margin-bottom: 2rem
+  }
+
+  .space-bottom {
     margin-bottom: 1rem
   }
 </style>
