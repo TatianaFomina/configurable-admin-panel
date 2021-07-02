@@ -75,7 +75,8 @@ import { defineComponent, PropType } from 'vue'
 import Icon from '@/components/icon/Icon.vue'
 import Popover from '@/components/popover/Popover.vue'
 import PopoverItem from '@/components/popover/PopoverItem.vue'
-import { Action, Column } from '@/models/table'
+import { Column } from '@/models/table'
+import { Action } from '@/models/config'
 
 export default defineComponent({
   name: 'Table',

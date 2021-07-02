@@ -1,6 +1,6 @@
 <template>
   <div class="menu-container">
-    <Popover>
+    <Popover v-if="dropdownMenu && dropdownMenu.length">
       <template #trigger>
         <div class="profile">
           <div class="avatar-group">
@@ -10,7 +10,7 @@
           <ChevronDownIcon class="icon" />
         </div>
       </template>
-      <PopoverItem v-for="action of profile.actions"
+      <PopoverItem v-for="action of dropdownMenu"
                    :key="action"
       >
         <div class="avatar-menu-item">
@@ -48,6 +48,7 @@ import { ChevronDownIcon } from '@heroicons/vue/solid'
 import Popover from '@/components/popover/Popover.vue'
 import PopoverItem from '@/components/popover/PopoverItem.vue'
 import Icon from '@/components/icon/Icon.vue'
+import { useConfig } from '@/config'
 
 export default defineComponent({
   name: 'Menu',
@@ -57,52 +58,17 @@ export default defineComponent({
     PopoverItem,
     Icon
   },
+  setup() {
+    const { menu, dropdownMenu } = useConfig()
+
+    return { menu, dropdownMenu }
+  },
   data() {
     return {
       profile: {
         name: 'Admin',
-        avatarUrl: '',
-        actions: [
-          {
-            label: 'Основные настройки',
-            icon: 'settings',
-            handler: () => {}
-          },
-          {
-            label: 'Настроить меню',
-            icon: 'menu',
-            handler: () => {}
-          },
-          {
-            label: 'Сообщить о проблеме',
-            icon: 'alert-triangle',
-            handler: () => {}
-          }
-        ]
-      },
-      menu: [
-        {
-          label: 'Списки данных',
-          items: [
-            {
-              label: 'Доступные города',
-              name: 'available-cities'
-            },
-            {
-              label: 'Заблокированные пользователи',
-              name: 'blocked-users'
-            },
-            {
-              label: 'Черный список ссылок',
-              name: 'links-blacklist'
-            },
-            {
-              label: 'Управление пользователями',
-              name: 'managing-users'
-            }
-          ]
-        }
-      ]
+        avatarUrl: '@/public/avatar.jpg'
+      }
     }
   }
 })

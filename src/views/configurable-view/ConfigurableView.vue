@@ -18,6 +18,7 @@ import { defineComponent } from 'vue'
 import Table from '@/components/table/Table.vue'
 import Button from '@/components/button/Button.vue'
 import SearchBar from '@/components/searchbar/SearchBar.vue'
+import { useConfig } from '@/config'
 
 export default defineComponent({
   name: 'ConfigurableView',
@@ -26,97 +27,13 @@ export default defineComponent({
     Button,
     SearchBar
   },
+  setup() {
+    const { views } = useConfig()
+
+    return { views }
+  },
   data() {
     return {
-      views: [
-        {
-          key: 'managing-users',
-          title: 'Управление пользователями',
-          supertitle: 'Списки данных',
-          components: [
-            {
-              type: 'button',
-              params: {
-                text: 'Добавить пользователя',
-                handler: () => {}
-              }
-            },
-            {
-              type: 'searchbar',
-              for: 'table0'
-            },
-            {
-              type: 'table',
-              id: 'table0',
-              params: {
-                title: 'Список пользователей',
-                cols: [
-                  {
-                    param: 'id',
-                    label: {
-                      text: 'ID',
-                      icon: 'list'
-                    },
-                    type: 'link'
-                  },
-                  {
-                    param: 'name',
-                    label: {
-                      text: 'Имя',
-                      icon: 'user'
-                    }
-                  },
-                  {
-                    param: 'email',
-                    label: {
-                      text: 'Email',
-                      icon: 'at-sign'
-                    }
-                  },
-                  {
-                    param: 'status',
-                    label: {
-                      text: 'Статус',
-                      icon: 'clock'
-                    }
-                  }
-                ],
-                actions: [
-                  {
-                    label: 'Удалить :name',
-                    disabled: false,
-                    handler: (row) => { alert(row.name) }
-                  },
-                  {
-                    label: 'Редактировать',
-                    disabled: false,
-                    handler: () => {}
-                  },
-                  {
-                    label: 'Забанить',
-                    disabled: false,
-                    handler: () => {}
-                  }
-                ],
-                data: [
-                  {
-                    id: 56723,
-                    name: 'Alex Stone',
-                    email: 'alexstone@greatsoul@gmail.com',
-                    status: '✅Активен'
-                  },
-                  {
-                    id: 56723,
-                    name: 'Alex Stone',
-                    email: 'alexstone@greatsoul@gmail.com',
-                    status: '✅Активен'
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      ]
     }
   },
   computed: {
@@ -133,5 +50,9 @@ export default defineComponent({
 <style scoped>
   .view-container {
     padding: 2.5rem;
+
+  }
+  .margin-bottom {
+    margin-bottom: 1rem
   }
 </style>

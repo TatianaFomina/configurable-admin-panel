@@ -9,11 +9,19 @@ export interface MenuSection {
 }
 
 export interface View {
-  key: string,
+  key: string
   components: ViewComponent[]
 }
 
+export interface Action {
+  label: string
+  handler: (row: any) => void
+  disabled?: boolean
+  icon?: string
+}
+
 export interface Config {
-  menu: MenuSection[],
+  menu: MenuSection[]
   views: View[]
+  dropdownMenuActions?: Action[]
 }

@@ -1,6 +1,4 @@
-import { ViewComponent } from './view-component'
-
-export interface ButtonComponent extends ViewComponent {
+export interface ButtonComponent {
   type: 'button'
   params: {
     text: string

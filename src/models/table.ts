@@ -1,4 +1,4 @@
-import { ViewComponent } from './view-component'
+import { Action } from './config'
 
 export interface Column {
   param: string
@@ -9,17 +9,13 @@ export interface Column {
   type?: 'link' | 'text'
 }
 
-export class Action {
-  label: string
-  handler: (row: any) => void
-  disabled?: boolean
-}
-
-export interface TableComponent extends ViewComponent {
-  type: 'table',
+export interface TableComponent {
+  type: 'table'
+  id?: string
   params: {
-    cols: Column[],
+    cols: Column[]
     actions?: Action[]
+    data?: any[]
     title?: string
   }
 }
