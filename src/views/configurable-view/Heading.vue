@@ -26,7 +26,7 @@ export default defineComponent({
     font-size: 1.4rem;
     color: var(--gray-0);
     margin-bottom: 2rem;
-    margin-top: 0.5rem
+    margin-top: 0.5rem;
   }
 
   h2 {

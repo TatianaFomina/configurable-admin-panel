@@ -58,14 +58,14 @@ export default defineComponent({
   input {
     background: var(--gray-6);
     border: none;
-    color: var(--gray-1)
+    color: var(--gray-1);
   }
 
   input::placeholder {
-    color: var(--gray-2)
+    color: var(--gray-2);
   }
 
-  input:focus{
+  input:focus {
     outline: none;
   }
 

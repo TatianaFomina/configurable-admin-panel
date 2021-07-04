@@ -51,6 +51,7 @@ export default defineComponent({
     cursor: pointer;
     padding: 0;
   }
+
   .expanded-area {
     position: absolute;
     z-index: 50;

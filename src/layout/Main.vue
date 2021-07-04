@@ -28,7 +28,7 @@ export default defineComponent({
 }
 
 .view {
-  flex: 1
+  flex: 1;
 }
 
 </style>

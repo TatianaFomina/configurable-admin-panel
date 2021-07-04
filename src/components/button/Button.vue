@@ -32,10 +32,10 @@ export default defineComponent({
   button:disabled {
     background: var(--gray-2);
     cursor: not-allowed;
-    color: var(--gray-1)
+    color: var(--gray-1);
   }
 
   button:not(:disabled):hover {
-    background: var(--blue-0)
+    background: var(--blue-0);
   }
 </style>

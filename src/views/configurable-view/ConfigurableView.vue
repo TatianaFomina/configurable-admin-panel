@@ -46,6 +46,6 @@ export default defineComponent({
   }
 
   .view-container > * {
-    margin-bottom: 2rem
+    margin-bottom: 2rem;
   }
 </style>

@@ -122,7 +122,8 @@ export default defineComponent({
     border-right: 1px solid var(--gray-3);
   }
 
-  td, th {
+  td,
+  th {
     padding: 0.3rem 0.5rem;
     font-size: 14px;
     border-top: 1px solid var(--gray-3);
@@ -135,7 +136,7 @@ export default defineComponent({
   th {
     text-align: left;
     font-weight: normal;
-    color: var(--gray-2)
+    color: var(--gray-2);
   }
 
   th > div {
@@ -168,7 +169,7 @@ export default defineComponent({
 
   .table-title {
     font-weight: 600;
-    font-size: 15px
+    font-size: 15px;
   }
 
   .heading {

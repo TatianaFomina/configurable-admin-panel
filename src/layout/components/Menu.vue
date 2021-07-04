@@ -153,11 +153,11 @@ a {
 }
 
 .section-item.active {
-  background: var(--gray-4)
+  background: var(--gray-4);
 }
 
 .section-item:not(.active):hover {
-  background: var(--gray-5)
+  background: var(--gray-5);
 }
 
 .section-label {

@@ -33,11 +33,11 @@ export default defineComponent({
   }
 
   .popover-item-container:not(.disabled):hover {
-    background: var(--gray-4)
+    background: var(--gray-4);
   }
 
   .disabled {
     cursor: not-allowed;
-    color: var(--gray-3)
+    color: var(--gray-3);
   }
 </style>
