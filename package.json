@@ -8,7 +8,9 @@
     "build": "webpack --mode=production",
     "dev": "webpack serve --mode=development",
     "stylelint": "stylelint \"src/**/*.vue\"",
-    "stylelint:fix": "stylelint \"src/**/*.vue\" --fix"
+    "stylelint:fix": "stylelint \"src/**/*.vue\" --fix",
+    "eslint": "eslint . -c .eslintrc",
+    "eslint:fix": "eslint . -c .eslintrc --fix"
   },
   "author": "Tatiana Fomina",
   "license": "ISC",
