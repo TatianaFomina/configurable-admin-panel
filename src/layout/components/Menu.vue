@@ -1,10 +1,13 @@
 <template>
   <div class="menu-container">
     <AvatarMenu class="avatar-menu" />
-    <template v-for="section in menu"
-              :key="section"
+    <div v-for="section in menu"
+         :key="section"
+         class="section"
     >
-      <div class="menu-item section-label">
+      <div v-if="section.label"
+           class="menu-item section-label"
+      >
         {{ section.label }}
       </div>
 
@@ -20,7 +23,7 @@
           {{ item.label }}
         </div>
       </RouterLink>
-    </template>
+    </div>
   </div>
 </template>
 
@@ -53,7 +56,6 @@ export default defineComponent({
   border-bottom: 1px solid var(--gray-5);
   display: none;
 }
-
 .menu-container {
   width: 19rem;
   border-right: 1px solid var(--gray-5);
@@ -68,6 +70,10 @@ export default defineComponent({
 
 a {
   text-decoration: none;
+}
+
+.section {
+  margin: 1rem 0
 }
 
 .section-item {
@@ -93,7 +99,7 @@ a {
 
 @media (min-width: 768px) {
   .avatar-menu {
-    display: initial;
+    display: block;
   }
 }
 
