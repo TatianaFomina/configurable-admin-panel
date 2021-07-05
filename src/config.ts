@@ -182,7 +182,7 @@ const config: Config = {
           type: 'button',
           params: {
             text: 'Добавить пользователя',
-            handler: () => {}
+            handler: () => { alert('Добавить пользователя') }
           }
         }
       ]
