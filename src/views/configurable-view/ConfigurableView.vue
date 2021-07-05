@@ -15,8 +15,12 @@ export default defineComponent({
   },
   computed: {
     view() {
+      const { getViewByKey, defaultViewKey } = useConfig()
       const key = this.$route.hash?.substr(1)
-      const { getViewByKey } = useConfig()
+
+      if (!key) {
+        this.$router.replace('#' + defaultViewKey)
+      }
 
       return getViewByKey(key)
     }

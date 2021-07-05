@@ -23,5 +23,6 @@ export interface Action {
 export interface Config {
   menu: MenuSection[]
   views: View[]
+  defaultView: string
   dropdownMenuActions?: Action[]
 }

@@ -1,6 +1,7 @@
 import { Config } from './models/config'
 
 const config: Config = {
+  defaultView: 'managing-users',
   dropdownMenuActions: [
     {
       label: 'Основные настройки',
@@ -215,6 +216,7 @@ export function useConfig() {
     menu: config.menu,
     dropdownMenu: config.dropdownMenuActions,
     views: config.views,
+    defaultViewKey: config.defaultView,
     getViewByKey,
     getViewHeadings
   }
