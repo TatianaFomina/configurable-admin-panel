@@ -41,11 +41,17 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.view-container {
+  padding: 0.5rem 1.5rem;
+}
+
+.view-container > * {
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
   .view-container {
     padding: 1.5rem 2.5rem;
   }
-
-  .view-container > * {
-    margin-bottom: 2rem;
-  }
+}
 </style>

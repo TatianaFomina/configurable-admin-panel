@@ -1,30 +1,6 @@
 <template>
   <div class="menu-container">
-    <Popover v-if="dropdownMenu && dropdownMenu.length">
-      <template #trigger>
-        <div class="profile">
-          <div class="avatar-group">
-            <div class="avatar" />
-            {{ profile.name }}
-          </div>
-          <ChevronDownIcon class="icon" />
-        </div>
-      </template>
-      <PopoverItem v-for="action of dropdownMenu"
-                   :key="action"
-      >
-        <div class="avatar-menu-item">
-          <Icon :name="action.icon"
-                size="15"
-                tag="i"
-                class="avatar-menu-item-icon"
-          />
-          <div>
-            {{ action.label }}
-          </div>
-        </div>
-      </PopoverItem>
-    </Popover>
+    <AvatarMenu class="avatar-menu" />
     <template v-for="section in menu"
               :key="section"
     >
@@ -35,6 +11,7 @@
       <RouterLink v-for="item of section.items"
                   :key="item.name"
                   :to="'#' + item.name"
+                  @click="$emit('select')"
       >
         <div
           class="menu-item section-item"
@@ -49,32 +26,18 @@
 
 <script lang='ts'>
 import { defineComponent } from 'vue'
-import { ChevronDownIcon } from '@heroicons/vue/solid'
-import Popover from '@/components/popover/Popover.vue'
-import PopoverItem from '@/components/popover/PopoverItem.vue'
-import Icon from '@/components/icon/Icon.vue'
+import AvatarMenu from './AvatarMenu.vue'
 import { useConfig } from '@/config'
 
 export default defineComponent({
   name: 'Menu',
   components: {
-    ChevronDownIcon,
-    Popover,
-    PopoverItem,
-    Icon
+    AvatarMenu
   },
   setup() {
-    const { menu, dropdownMenu } = useConfig()
+    const { menu } = useConfig()
 
-    return { menu, dropdownMenu }
-  },
-  data() {
-    return {
-      profile: {
-        name: 'Admin',
-        avatarUrl: '@/public/avatar.jpg'
-      }
-    }
+    return { menu }
   },
   computed: {
     currentHash() {
@@ -86,49 +49,9 @@ export default defineComponent({
 
 <style scoped>
 
-.avatar-group {
-  display: flex;
-  align-items: center;
-}
-
-.profile {
-  padding: 1rem 0.75rem 1rem 1.3rem;
+.avatar-menu {
   border-bottom: 1px solid var(--gray-5);
-  color: white;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 16.95rem;
-}
-
-.profile:hover {
-  background: var(--gray-5);
-}
-
-.avatar {
-  width: 1.5rem;
-  height: 1.5rem;
-  background: url('@/public/avatar.jpg');
-  background-size: cover;
-  border-radius: 15%;
-  margin-right: 0.75rem;
-}
-
-.avatar-menu-item {
-  display: flex;
-  align-items: center;
-}
-
-.avatar-menu-item-icon {
-  transform: translateY(0.125rem);
-  margin-right: 1rem;
-}
-
-.icon {
-  width: 1.75rem;
-  height: 1.75rem;
-  color: var(--gray-2);
+  display: none;
 }
 
 .menu-container {
@@ -166,6 +89,12 @@ a {
   font-size: 13px;
   letter-spacing: 0.07rem;
   text-transform: uppercase;
+}
+
+@media (min-width: 768px) {
+  .avatar-menu {
+    display: initial;
+  }
 }
 
 </style>
