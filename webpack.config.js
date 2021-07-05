@@ -3,8 +3,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
 const webpack = require('webpack')
 
-module.exports = {
+module.exports = (env, argv) => ({
   entry: './src/main.ts',
+  output: {
+    publicPath: argv.mode === 'production'
+      ? '/configurable-admin-panel/'
+      : '/'
+  },
   resolve: {
     extensions: ['.ts', '.js', '.vue', '.json'],
     alias: {
@@ -55,4 +60,4 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, 'src/public')
   }
-}
+})
