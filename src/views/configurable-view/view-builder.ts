@@ -39,11 +39,20 @@ function renderTable(component: TableComponent, components: ViewComponent[]) {
 }
 
 function renderButton(component: ButtonComponent) {
-  return h(
+  const button = h(
     Button,
-    {},
+    {
+      onClick: component.params.handler
+    },
     () => component.params.text
   )
+
+  if (component.params.link) {
+    return h('a', {
+      href: component.params.link
+    }, button)
+  }
+  return button
 }
 
 function renderSearchbar(component: SearchbarComponent) {

@@ -20,6 +20,14 @@ const config: Config = {
   ],
   menu: [
     {
+      items: [
+        {
+          label: 'Подписка на еженедельную рассылку',
+          name: 'subscription'
+        }
+      ]
+    },
+    {
       label: 'Списки данных',
       items: [
         {
@@ -31,10 +39,6 @@ const config: Config = {
           name: 'blocked-users'
         },
         {
-          label: 'Черный список ссылок',
-          name: 'links-blacklist'
-        },
-        {
           label: 'Управление пользователями',
           name: 'managing-users'
         }
@@ -42,6 +46,59 @@ const config: Config = {
     }
   ],
   views: [
+    {
+      key: 'subscription',
+      components: [
+        {
+          type: 'button',
+          params: {
+            text: 'Настроить рассылку',
+            handler: () => { alert('Настроить рассылку') }
+          }
+        }
+      ]
+    },
+    {
+      key: 'blocked-users',
+      components: [
+        {
+          type: 'button',
+          params: {
+            text: 'Перейти в управление пользователями',
+            link: '/#managing-users'
+          }
+        }
+      ]
+    },
+    {
+      key: 'available-cities',
+      components: [
+        {
+          type: 'table',
+          params: {
+            cols: [
+              {
+                label: { text: 'ID' },
+                param: 'id'
+              },
+              {
+                label: { text: 'Название' },
+                param: 'name'
+              }
+            ],
+            data: [
+              { id: 1, name: 'Санкт-Петербург' },
+              { id: 2, name: 'Москва' },
+              { id: 3, name: 'Екатеринбург' },
+              { id: 4, name: 'Сыктывкар' },
+              { id: 5, name: 'Иркутск' },
+              { id: 6, name: 'Улан-Удэ' },
+              { id: 7, name: 'Владивосток' }
+            ]
+          }
+        }
+      ]
+    },
     {
       key: 'managing-users',
       components: [

@@ -96,7 +96,7 @@ export default defineComponent({
     },
     actions: {
       type: Array as PropType<Action[]>,
-      required: true
+      default: () => []
     },
     data: {
       type: Array,
@@ -134,6 +134,7 @@ th {
   padding: 0.3rem 0.5rem;
   font-size: 14px;
   border-top: 1px solid var(--gray-3);
+  height: 1.5rem
 }
 
 tr:last-child td {
