@@ -56,6 +56,7 @@ export default defineComponent({
   border-bottom: 1px solid var(--gray-5);
   display: none;
 }
+
 .menu-container {
   width: 19rem;
   border-right: 1px solid var(--gray-5);
@@ -73,7 +74,7 @@ a {
 }
 
 .section {
-  margin: 1rem 0
+  margin: 1rem 0;
 }
 
 .section-item {

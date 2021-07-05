@@ -114,6 +114,8 @@ export default defineComponent({
 
 .table-container {
   overflow: auto;
+  padding-bottom: 100%;
+  margin-bottom: -100%;
 }
 
 table {
@@ -134,7 +136,7 @@ th {
   padding: 0.3rem 0.5rem;
   font-size: 14px;
   border-top: 1px solid var(--gray-3);
-  height: 1.5rem
+  height: 1.5rem;
 }
 
 tr:last-child td {
@@ -154,7 +156,7 @@ th > div {
 }
 
 td.actions-cell > * {
-  margin: auto
+  margin: auto;
 }
 
 a {

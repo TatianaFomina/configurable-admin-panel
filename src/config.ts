@@ -31,16 +31,16 @@ const config: Config = {
       label: 'Списки данных',
       items: [
         {
+          label: 'Управление пользователями',
+          name: 'managing-users'
+        },
+        {
           label: 'Доступные города',
           name: 'available-cities'
         },
         {
           label: 'Заблокированные пользователи',
           name: 'blocked-users'
-        },
-        {
-          label: 'Управление пользователями',
-          name: 'managing-users'
         }
       ]
     }
