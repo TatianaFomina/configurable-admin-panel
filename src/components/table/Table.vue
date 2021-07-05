@@ -144,6 +144,7 @@ th {
   text-align: left;
   font-weight: normal;
   color: var(--gray-2);
+  white-space: nowrap;
 }
 
 th > div {
@@ -151,9 +152,8 @@ th > div {
   align-items: center;
 }
 
-td.actions-cell {
-  display: flex;
-  justify-content: center;
+td.actions-cell > * {
+  margin: auto
 }
 
 a {
